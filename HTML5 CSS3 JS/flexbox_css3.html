@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexbox Teaching Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  h2 {
+    color: #2e7d32;
+  }
+
+  /* Flex container styles */
+  .container {
+    display: flex; /* Enables Flexbox */
+    flex-direction: row; /* Main axis horizontal */
+    justify-content: space-between; /* Distribute space along main axis */
+    align-items: center; /* Align items along cross axis */
+    height: 150px;
+    border: 2px solid #4CAF50;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  /* Flex items styles */
+  .item {
+    background-color: #81C784;
+    padding: 20px;
+    flex: 1; /* Grow equally */
+    margin: 5px;
+    text-align: center;
+    position: relative;
+    cursor: help;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  /* Tooltip for teaching */
+  .item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4CAF50;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+
+  .item:hover::after {
+    opacity: 1;
+  }
+
+  /* Labels for container properties */
+  .label {
+    font-size: 14px;
+    color: #1b5e20;
+    margin-top: 5px;
+  }
+
+</style>
+</head>
+<body>
+
+<h2>Flexbox Teaching Example</h2>
+
+<p>This example demonstrates key <strong>Flexbox properties</strong>. Hover over each item to learn about the properties applied.</p>
+
+<div class="container" data-tooltip="Container: display:flex; flex-direction:row; justify-content:space-between; align-items:center;">
+  <div class="item" data-tooltip="flex:1 → grows equally to fill space">Item 1</div>
+  <div class="item" data-tooltip="flex:1 → grows equally to fill space">Item 2</div>
+  <div class="item" data-tooltip="flex:1 → grows equally to fill space">Item 3</div>
+</div>
+
+<div class="label">
+  <strong>Flex Container Properties:</strong><br>
+  display: flex;<br>
+  flex-direction: row;<br>
+  justify-content: space-between;<br>
+  align-items: center;
+</div>
+
+<div class="label">
+  <strong>Flex Item Property:</strong><br>
+  flex: 1; /* Items grow equally */
+</div>
+
+<p><strong>Explanation:</strong></p>
+<ul>
+  <li><strong>display:flex:</strong> Enables flex layout for container.</li>
+  <li><strong>flex-direction:</strong> Sets main axis (row or column).</li>
+  <li><strong>justify-content:</strong> Aligns items along main axis (horizontal here).</li>
+  <li><strong>align-items:</strong> Aligns items along cross axis (vertical here).</li>
+  <li><strong>flex:1:</strong> Makes each item grow equally to fill container space.</li>
+</ul>
+
+</body>
+</html>

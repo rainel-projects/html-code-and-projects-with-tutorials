@@ -1,0 +1,135 @@
+<div class="min-h-screen p-6">
+  <div class="text-center mb-8">
+    <h1 class="text-2xl font-bold mb-4" style="background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Forms Comparison</h1>
+    <p class="text-slate-400">Side-by-side comparison of Template-driven vs Reactive forms with live state indicators</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Template-driven -->
+    <div class="form-card template-driven">
+      <div class="form-type-badge template">Template-driven</div>
+      <div class="live-indicator">Live State</div>
+      <h2 class="font-semibold mb-3">Template-driven Form</h2>
+      <form #f="ngForm" novalidate>
+        <label class="form-label">Name</label>
+        <input 
+          name="name" 
+          [(ngModel)]="user.name" 
+          #name="ngModel" 
+          required 
+          minlength="2" 
+          class="form-input"
+          [class.valid]="name.valid && name.touched"
+          [class.invalid]="name.invalid && name.touched"
+        />
+        <div class="error-message" *ngIf="name.invalid && (name.dirty || name.touched)">
+          Name is required (min 2 chars)
+        </div>
+
+        <label class="form-label mt-3">Email</label>
+        <input 
+          name="email" 
+          [(ngModel)]="user.email" 
+          #email="ngModel" 
+          required 
+          email 
+          class="form-input"
+          [class.valid]="email.valid && email.touched"
+          [class.invalid]="email.invalid && email.touched"
+        />
+        <div class="error-message" *ngIf="email.invalid && (email.dirty || email.touched)">
+          Valid email is required
+        </div>
+      </form>
+
+      <div class="form-state">
+        <div class="state-item">
+          <span class="state-label">Value:</span>
+          <span class="text-xs">{{ user | json }}</span>
+        </div>
+        <div class="state-item">
+          <span class="state-label">Valid:</span>
+          <span class="state-value" [class.true]="f.valid" [class.false]="!f.valid">{{ f.valid }}</span>
+        </div>
+        <div class="state-item">
+          <span class="state-label">Touched:</span>
+          <span class="state-value" [class.true]="f.touched" [class.false]="!f.touched">{{ f.touched }}</span>
+        </div>
+        <div class="state-item">
+          <span class="state-label">Dirty:</span>
+          <span class="state-value" [class.true]="f.dirty" [class.false]="!f.dirty">{{ f.dirty }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reactive -->
+    <div class="form-card reactive">
+      <div class="form-type-badge reactive">Reactive</div>
+      <div class="live-indicator">Live State</div>
+      <h2 class="font-semibold mb-3">Reactive Form</h2>
+      <form [formGroup]="form" novalidate>
+        <label class="form-label">Name</label>
+        <input 
+          formControlName="name" 
+          class="form-input"
+          [class.valid]="form.get('name')?.valid && form.get('name')?.touched"
+          [class.invalid]="form.get('name')?.invalid && form.get('name')?.touched"
+        />
+        <div class="error-message" *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)">
+          Name is required (min 2 chars)
+        </div>
+
+        <label class="form-label mt-3">Email</label>
+        <input 
+          formControlName="email" 
+          class="form-input"
+          [class.valid]="form.get('email')?.valid && form.get('email')?.touched"
+          [class.invalid]="form.get('email')?.invalid && form.get('email')?.touched"
+        />
+        <div class="error-message" *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
+          Valid email is required
+        </div>
+      </form>
+
+      <div class="form-state">
+        <div class="state-item">
+          <span class="state-label">Value:</span>
+          <span class="text-xs">{{ form.value | json }}</span>
+        </div>
+        <div class="state-item">
+          <span class="state-label">Valid:</span>
+          <span class="state-value" [class.true]="form.valid" [class.false]="!form.valid">{{ form.valid }}</span>
+        </div>
+        <div class="state-item">
+          <span class="state-label">Touched:</span>
+          <span class="state-value" [class.true]="form.touched" [class.false]="!form.touched">{{ form.touched }}</span>
+        </div>
+        <div class="state-item">
+          <span class="state-label">Dirty:</span>
+          <span class="state-value" [class.true]="form.dirty" [class.false]="!form.dirty">{{ form.dirty }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comparison-summary">
+    <div class="text-center mb-4">
+      <h3 class="font-semibold text-lg mb-2">Form Comparison</h3>
+      <p class="text-slate-400">Key differences between Template-driven and Reactive forms</p>
+    </div>
+    <div class="text-center">
+      <div class="mb-4">
+        <code class="text-emerald-400">Template-driven:</code>
+        <span class="text-slate-400">Simple, directive-based, good for small forms</span>
+      </div>
+      <div class="mb-4">
+        <code class="text-blue-400">Reactive:</code>
+        <span class="text-slate-400">Programmatic, type-safe, better for complex forms</span>
+      </div>
+    </div>
+    <div class="mt-6 text-center text-sm text-slate-400">
+      <p><strong>Template-driven:</strong> Uses ngModel, form state in template</p>
+      <p><strong>Reactive:</strong> Uses FormControl, form state in component</p>
+    </div>
+  </div>
+</div>

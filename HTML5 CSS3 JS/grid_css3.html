@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Grid Teaching Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  h2 {
+    color: #1565C0;
+  }
+
+  /* Grid container styles */
+  .container {
+    display: grid; /* Enable CSS Grid */
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-gap: 10px; /* Gap between rows and columns */
+    border: 2px solid #4CAF50;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  /* Grid item styles */
+  .item {
+    background-color: #64B5F6;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    cursor: help;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  /* Tooltip for teaching */
+  .item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1565C0;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+
+  .item:hover::after {
+    opacity: 1;
+  }
+
+  /* Labels for container properties */
+  .label {
+    font-size: 14px;
+    color: #0D47A1;
+    margin-top: 10px;
+  }
+
+  ul {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>CSS Grid Teaching Example</h2>
+
+<p>This example demonstrates key <strong>CSS Grid properties</strong>. Hover over each grid item to learn about the layout.</p>
+
+<div class="container" data-tooltip="Container: display:grid; grid-template-columns:repeat(3,1fr); grid-gap:10px;">
+  <div class="item" data-tooltip="Grid item 1">Item 1</div>
+  <div class="item" data-tooltip="Grid item 2">Item 2</div>
+  <div class="item" data-tooltip="Grid item 3">Item 3</div>
+  <div class="item" data-tooltip="Grid item 4">Item 4</div>
+  <div class="item" data-tooltip="Grid item 5">Item 5</div>
+  <div class="item" data-tooltip="Grid item 6">Item 6</div>
+</div>
+
+<div class="label">
+  <strong>Grid Container Properties:</strong><br>
+  display: grid;<br>
+  grid-template-columns: repeat(3, 1fr);<br>
+  grid-gap: 10px;
+</div>
+
+<p><strong>Explanation:</strong></p>
+<ul>
+  <li><strong>display: grid;</strong> → Enables grid layout for the container.</li>
+  <li><strong>grid-template-columns:</strong> → Defines the number and size of columns. Here we have 3 equal columns using `1fr`.</li>
+  <li><strong>grid-gap:</strong> → Sets space between rows and columns.</li>
+  <li>Each grid item automatically fills a cell in the grid.</li>
+  <li>You can span items using <code>grid-column</code> or <code>grid-row</code> properties.</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+ <!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <title>Document Structure</title> -->
+<!-- </head> -->
+<!-- <body> -->
+    <!-- <header> -->
+        <!-- Header content -->
+    <!-- </header> -->
+
+    <!-- <main> -->
+        <!-- <article> -->
+            <!-- <section> -->
+                <!-- <article> -->
+                    <!-- Nested article content -->
+                <!-- </article> -->
+            <!-- </section> -->
+        <!-- </article> -->
+
+        <!-- <aside> -->
+            <!-- Sidebar content -->
+        <!-- </aside> -->
+    <!-- </main> -->
+
+    <!-- <footer> -->
+        <!-- Footer content -->
+    <!-- </footer> -->
+<!-- </body> -->
+<!-- </html>   -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Structure Tutorial</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+        }
+
+        header {
+            background-color: #6a5acd; /* Purple */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.5em;
+        }
+
+        main {
+            background-color: #e6f7ff; /* Light blue */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        article {
+            background-color: #ffe4b5; /* Moccasin (warm orange) */
+            padding: 15px;
+            margin: 10px;
+            flex: 2;
+            border-left: 6px solid #ffa500; /* Orange highlight */
+            border-radius: 10px;
+        }
+
+        section {
+            background-color: #fff0f5; /* Lavender blush (light pink) */
+            padding: 15px;
+            border: 2px dashed #ff69b4; /* Hot pink border */
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        section article {
+            background-color: #fafad2; /* Light golden yellow */
+            border: 2px solid #ffd700; /* Gold border */
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        aside {
+            background-color: #98fb98; /* Pale green */
+            flex: 1;
+            margin: 10px;
+            padding: 15px;
+            border-left: 6px solid #32cd32; /* Lime green border */
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #4682b4; /* Steel blue */
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2em;
+        }
+
+        .explanation {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-left: 5px solid #6a5acd;
+            border-radius: 10px;
+        }
+
+        .tag {
+            font-weight: bold;
+            padding: 3px 7px;
+            border-radius: 4px;
+        }
+
+        .header { background: #6a5acd; color: white; }
+        .main { background: #e6f7ff; }
+        .article { background: #ffe4b5; }
+        .section { background: #fff0f5; }
+        .aside { background: #98fb98; }
+        .footer { background: #4682b4; color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Header Area</h1>
+        <p>This is the top part of the page — usually includes logo and navigation.</p>
+    </header>
+
+    <main>
+        <article>
+            <h2>Main Article</h2>
+            <p>This <strong>article</strong> holds the main content of the page.</p>
+
+            <section>
+                <h3>Section Inside Article</h3>
+                <p>This <strong>section</strong> organizes content within the article.</p>
+
+                <article>
+                    <h4>Nested Article</h4>
+                    <p>This <strong>nested article</strong> represents a sub-topic inside the main article.</p>
+                </article>
+            </section>
+        </article>
+
+        <aside>
+            <h3>Sidebar</h3>
+            <p>The <strong>aside</strong> often contains related links, ads, or extra info.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>Footer — typically includes contact info or copyrights.</p>
+    </footer>
+
+    <div class="explanation">
+        <h2>🌈 Color Legend & Explanation</h2>
+        <p><span class="tag header">&lt;header&gt;</span> → Purple → Top section (logo/navigation area)</p>
+        <p><span class="tag main">&lt;main&gt;</span> → Light Blue → Central content area</p>
+        <p><span class="tag article">&lt;article&gt;</span> → Warm Orange → Independent piece of content</p>
+        <p><span class="tag section">&lt;section&gt;</span> → Pink → Thematic grouping of content</p>
+        <p><span class="tag aside">&lt;aside&gt;</span> → Green → Extra info like a sidebar</p>
+        <p><span class="tag footer">&lt;footer&gt;</span> → Blue → Bottom of the page, contact/info</p>
+    </div>
+</body>
+</html>

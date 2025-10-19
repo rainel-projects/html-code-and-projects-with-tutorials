@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript ES6+ Demo</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f9; }
+  h2 { color: #3f51b5; }
+  .section { background: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+  button { padding: 10px 15px; margin-top: 10px; cursor: pointer; border: none; background: #3f51b5; color: white; border-radius: 5px; }
+  pre { background: #eee; padding: 10px; border-radius: 5px; overflow-x: auto;}
+</style>
+</head>
+<body>
+
+<h1>JavaScript ES6+ Features Demo</h1>
+
+<!-- 1. Promises & Async/Await -->
+<div class="section">
+  <h2>1. Promises & Async/Await</h2>
+  <button onclick="runAsyncDemo()">Fetch Random User</button>
+  <div id="asyncResult"></div>
+  <pre id="asyncCode">
+// Promise example
+function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve('Data loaded!'), 1000);
+  });
+}
+
+// Async/Await
+async function runAsyncDemo() {
+  const resultDiv = document.getElementById('asyncResult');
+  resultDiv.textContent = 'Loading...';
+  const data = await fetchData();
+  resultDiv.textContent = data;
+}
+  </pre>
+</div>
+
+<!-- 2. Destructuring -->
+<div class="section">
+  <h2>2. Destructuring</h2>
+  <div id="destructResult"></div>
+  <pre>
+const user = { name: 'Veda', age: 25, city: 'Bangalore' };
+const { name, city } = user;
+document.getElementById('destructResult').textContent = `Name: ${name}, City: ${city}`;
+  </pre>
+</div>
+
+<!-- 3. Classes -->
+<div class="section">
+  <h2>3. Classes</h2>
+  <div id="classResult"></div>
+  <pre>
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greet() {
+    return `Hello, my name is ${this.name}`;
+  }
+}
+
+const veda = new Person('Veda', 25);
+document.getElementById('classResult').textContent = veda.greet();
+  </pre>
+</div>
+
+<!-- 4. Fetch API -->
+<div class="section">
+  <h2>4. Fetch API</h2>
+  <button onclick="fetchAPI()">Get User from API</button>
+  <div id="fetchResult"></div>
+  <pre>
+async function fetchAPI() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users/1');
+  const user = await res.json();
+  document.getElementById('fetchResult').textContent = JSON.stringify(user, null, 2);
+}
+  </pre>
+</div>
+
+<!-- JS Logic -->
+<script>
+  // 1. Promises
+  function fetchData() {
+    return new Promise((resolve) => {
+      setTimeout(() => resolve('Data loaded!'), 1000);
+    });
+  }
+
+  async function runAsyncDemo() {
+    const resultDiv = document.getElementById('asyncResult');
+    resultDiv.textContent = 'Loading...';
+    const data = await fetchData();
+    resultDiv.textContent = data;
+  }
+
+  // 2. Destructuring
+  const user = { name: 'Veda', age: 25, city: 'Bangalore' };
+  const { name, city } = user;
+  document.getElementById('destructResult').textContent = `Name: ${name}, City: ${city}`;
+
+  // 3. Classes
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    greet() {
+      return `Hello, my name is ${this.name}`;
+    }
+  }
+  const veda = new Person('Veda', 25);
+  document.getElementById('classResult').textContent = veda.greet();
+
+  // 4. Fetch API
+  async function fetchAPI() {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users/1');
+    const user = await res.json();
+    document.getElementById('fetchResult').textContent = JSON.stringify(user, null, 2);
+  }
+</script>
+
+</body>
+</html>

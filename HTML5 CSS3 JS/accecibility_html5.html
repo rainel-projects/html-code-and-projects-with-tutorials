@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessible HTML5 Visual Tutorial</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  header, main, aside, footer {
+    border: 2px solid #4CAF50;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  header {
+    background-color: #e8f5e9;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #2e7d32;
+    font-weight: bold;
+  }
+
+  section, article, aside {
+    background-color: #f1f8e9;
+    margin-top: 10px;
+  }
+
+  /* Tooltip styles */
+  .tooltip {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dashed #2e7d32;
+  }
+
+  .tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 0;
+    bottom: 120%;
+    background: #4CAF50;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-size: 14px;
+  }
+
+  .tooltip:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  footer {
+    background-color: #e0f2f1;
+  }
+
+</style>
+</head>
+<body>
+
+<header role="banner">
+  <h1 class="tooltip" data-tooltip="The main page header, contains site title and nav">My Portfolio</h1>
+  <nav role="navigation">
+    <ul>
+      <li><a href="#about" class="tooltip" data-tooltip="Link to About section">About</a></li>
+      <li><a href="#projects" class="tooltip" data-tooltip="Link to Projects section">Projects</a></li>
+      <li><a href="#contact" class="tooltip" data-tooltip="Link to Contact section">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main role="main">
+  <section id="about" class="tooltip" data-tooltip="Section element groups related content; includes a heading">
+    <h2>About Me</h2>
+    <p>I am a frontend developer focused on accessible web design.</p>
+  </section>
+
+  <section id="projects" class="tooltip" data-tooltip="This section contains articles; each article is self-contained content">
+    <h2>Projects</h2>
+    <article class="tooltip" data-tooltip="Article element is independent, reusable content">
+      <h3>Weather App</h3>
+      <p>Built using HTML5, CSS3, JavaScript with ARIA support.</p>
+    </article>
+  </section>
+</main>
+
+<aside role="complementary" class="tooltip" data-tooltip="Aside contains supplementary info, like tech stack">
+  <h3>Tech Stack</h3>
+  <ul>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+  </ul>
+</aside>
+
+<footer role="contentinfo" class="tooltip" data-tooltip="Footer contains copyright or contact info">
+  <p>&copy; 2025 Veda</p>
+</footer>
+
+</body>
+</html>
