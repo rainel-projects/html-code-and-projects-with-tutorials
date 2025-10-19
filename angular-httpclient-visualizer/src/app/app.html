@@ -1,0 +1,75 @@
+<div class="min-h-screen p-6">
+  <div class="text-center mb-8">
+    <h1 class="text-2xl font-bold mb-4" style="background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">HTTPClient Visualizer</h1>
+    <p class="text-slate-400">Interactive demonstration of HTTP methods with real API calls</p>
+  </div>
+
+  <div class="method-buttons">
+    <button class="method-btn get" (click)="call('GET')" [disabled]="loading()">
+      <span class="method-badge get">GET</span>
+      Users
+    </button>
+    <button class="method-btn post" (click)="call('POST')" [disabled]="loading()">
+      <span class="method-badge post">POST</span>
+      Create
+    </button>
+    <button class="method-btn put" (click)="call('PUT')" [disabled]="loading()">
+      <span class="method-badge put">PUT</span>
+      Update
+    </button>
+    <button class="method-btn delete" (click)="call('DELETE')" [disabled]="loading()">
+      <span class="method-badge delete">DELETE</span>
+      Remove
+    </button>
+  </div>
+
+  <div class="http-flow">
+    <div class="flow-step" [class.active]="activeMethod()">Component</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" [class.active]="activeMethod()" [class.loading]="loading()">Service</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" [class.active]="activeMethod()" [class.loading]="loading()">API</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" [class.active]="response()">Response</div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="flow-card">
+      <h2 class="font-semibold mb-2">Request Flow</h2>
+      <div class="mt-4">
+        <div *ngIf="activeMethod()" class="status-indicator status-loading">
+          <div *ngIf="loading()" class="loading-spinner"></div>
+          <span>{{ activeMethod() }} Request in Progress</span>
+        </div>
+        <div *ngIf="error()" class="status-indicator status-error mt-2">
+          {{ error() }}
+        </div>
+        <div *ngIf="response()" class="status-indicator status-success mt-2">
+          ✓ Request Completed Successfully
+        </div>
+      </div>
+      <div class="mt-4 text-sm text-slate-400">
+        <p>Method: <span class="text-emerald-400">{{ activeMethod() || 'None' }}</span></p>
+        <p>Status: <span [class]="loading() ? 'text-blue-400' : error() ? 'text-rose-400' : 'text-emerald-400'">
+          {{ loading() ? 'Loading...' : error() ? 'Error' : response() ? 'Success' : 'Ready' }}
+        </span></p>
+      </div>
+    </div>
+    <div class="response-card">
+      <h2 class="font-semibold mb-2">API Response</h2>
+      <div *ngIf="!response() && !error()" class="text-center text-slate-400 py-8">
+        <p>Click a method button to make an API call</p>
+        <p class="text-xs mt-2">Using JSONPlaceholder API</p>
+      </div>
+      <div *ngIf="loading()" class="text-center text-slate-400 py-8">
+        <div class="loading-spinner mx-auto mb-2"></div>
+        <p>Loading response...</p>
+      </div>
+      <div *ngIf="error()" class="text-rose-400">
+        <p class="font-semibold">Error:</p>
+        <p>{{ error() }}</p>
+      </div>
+      <pre *ngIf="response()" class="text-xs overflow-auto">{{ response() | json }}</pre>
+    </div>
+  </div>
+</div>
